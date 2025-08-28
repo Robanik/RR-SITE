@@ -14,9 +14,13 @@
       overflow-x: hidden;
     }
 
-    @keyframes slideIn {
-      0% { transform: translateY(-100px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
+    /* Анимация заголовка и текста */
+    .fade {
+      transition: opacity 0.5s ease;
+      opacity: 1;
+    }
+    .fade-out {
+      opacity: 0;
     }
 
     header {
@@ -25,7 +29,6 @@
     h1 {
       font-size: 4em;
       margin: 0;
-      animation: slideIn 1s ease-out;
     }
 
     /* Discord кнопка слева сверху */
@@ -87,10 +90,10 @@
 </head>
 <body>
 
-  <!-- Discord кнопка слева сверху -->
+  <!-- Discord кнопка слева сверху с текстом robanik -->
   <a class="btn" id="discord-btn" href="https://discord.gg/pPHpAYjJ" target="_blank">
     <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord">
-    Hub
+    Hub - robanik
   </a>
 
   <!-- Кнопка смены языка справа сверху -->
@@ -98,11 +101,11 @@
 
   <!-- Главный заголовок -->
   <header>
-    <h1 id="main-title">RR SCRIPT</h1>
+    <h1 id="main-title" class="fade">RR SCRIPT</h1>
   </header>
 
   <!-- Описание сайта -->
-  <div id="description">
+  <div id="description" class="fade">
     Всем привет! Это сайт, где вы можете получить скрипты для разных игр. Я почти каждый день работаю над скриптами и решил сделать сайт для новичков. Здесь вы получите идеальные скрипты для игр, и надеюсь, вам всё понравится.
   </div>
 
@@ -111,7 +114,6 @@
     const title = document.getElementById('main-title');
     const desc = document.getElementById('description');
 
-    // Два варианта текста
     const text = {
       ru: {
         title: 'RR SCRIPT',
@@ -126,12 +128,23 @@
     let currentLang = 'ru';
 
     langBtn.addEventListener('click', () => {
-      currentLang = currentLang === 'ru' ? 'en' : 'ru';
-      title.textContent = text[currentLang].title;
-      desc.textContent = text[currentLang].description;
-      langBtn.textContent = currentLang === 'ru' ? 'EN' : 'RU';
+      // Сначала скрываем текст
+      title.classList.add('fade-out');
+      desc.classList.add('fade-out');
+
+      setTimeout(() => {
+        // Меняем текст
+        currentLang = currentLang === 'ru' ? 'en' : 'ru';
+        title.textContent = text[currentLang].title;
+        desc.textContent = text[currentLang].description;
+        langBtn.textContent = currentLang === 'ru' ? 'EN' : 'RU';
+
+        // Показываем текст
+        title.classList.remove('fade-out');
+        desc.classList.remove('fade-out');
+      }, 300); // время соответствует transition в CSS
     });
   </script>
 
 </body>
-      </html>
+    </html>
