@@ -5,7 +5,6 @@
   <title>RR SCRIPT</title>
   <link rel="icon" href="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg">
   <style>
-    /* Общий стиль */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,7 +14,6 @@
       overflow-x: hidden;
     }
 
-    /* Анимация текста */
     @keyframes slideIn {
       0% { transform: translateY(-100px); opacity: 0; }
       100% { transform: translateY(0); opacity: 1; }
@@ -56,6 +54,26 @@
       height: 20px;
     }
 
+    /* Кнопка смены языка справа сверху */
+    #lang-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ff6b6b;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-size: 1em;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      z-index: 1000;
+    }
+    #lang-btn:hover {
+      background: #ff3b3b;
+      transform: scale(1.05);
+    }
+
     /* Текст снизу */
     #description {
       max-width: 800px;
@@ -75,15 +93,45 @@
     Hub
   </a>
 
-  <!-- Главный заголовок с анимацией -->
+  <!-- Кнопка смены языка справа сверху -->
+  <div id="lang-btn">EN</div>
+
+  <!-- Главный заголовок -->
   <header>
-    <h1>RR SCRIPT</h1>
+    <h1 id="main-title">RR SCRIPT</h1>
   </header>
 
-  <!-- Описание сайта снизу -->
+  <!-- Описание сайта -->
   <div id="description">
     Всем привет! Это сайт, где вы можете получить скрипты для разных игр. Я почти каждый день работаю над скриптами и решил сделать сайт для новичков. Здесь вы получите идеальные скрипты для игр, и надеюсь, вам всё понравится.
   </div>
 
+  <script>
+    const langBtn = document.getElementById('lang-btn');
+    const title = document.getElementById('main-title');
+    const desc = document.getElementById('description');
+
+    // Два варианта текста
+    const text = {
+      ru: {
+        title: 'RR SCRIPT',
+        description: 'Всем привет! Это сайт, где вы можете получить скрипты для разных игр. Я почти каждый день работаю над скриптами и решил сделать сайт для новичков. Здесь вы получите идеальные скрипты для игр, и надеюсь, вам всё понравится.'
+      },
+      en: {
+        title: 'RR SCRIPT',
+        description: 'Hello everyone! This site is where you can get scripts for different games. I work on scripts almost every day and decided to make a site for beginners. Here you will get perfect scripts for games, and I hope you enjoy them.'
+      }
+    };
+
+    let currentLang = 'ru';
+
+    langBtn.addEventListener('click', () => {
+      currentLang = currentLang === 'ru' ? 'en' : 'ru';
+      title.textContent = text[currentLang].title;
+      desc.textContent = text[currentLang].description;
+      langBtn.textContent = currentLang === 'ru' ? 'EN' : 'RU';
+    });
+  </script>
+
 </body>
-    </html>
+      </html>
