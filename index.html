@@ -1,7 +1,100 @@
-<header>
-  <h1>Привет! 🚀</h1>
-  <p>Это мой первый сайт на GitHub Pages</p>
-  
-  <!-- Кнопка Discord -->
-  <a class="btn" href="#" id="discord-btn">Discord</a>
-</header>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Мой сайт</title>
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg">
+  <style>
+    /* Общий стиль */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      text-align: center;
+    }
+
+    /* Шапка сайта */
+    header {
+      padding: 100px 20px 50px 20px;
+    }
+    h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+    p {
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+
+    /* Кнопки */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: #ff6b6b;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn:hover {
+      background: #ff3b3b;
+      transform: scale(1.05);
+    }
+
+    /* Discord кнопка слева сверху */
+    #discord-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #7289da;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-size: 1em;
+      z-index: 1000;
+      gap: 6px;
+    }
+    #discord-btn:hover {
+      background: #5b6eae;
+    }
+    #discord-btn img {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Подвал */
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      background: rgba(0,0,0,0.2);
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Discord кнопка слева сверху -->
+  <a class="btn" id="discord-btn" href="https://discord.gg/pPHpAYjJ" target="_blank">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord">
+    Discord
+  </a>
+
+  <!-- Основная шапка -->
+  <header>
+    <h1>Привет! 🚀</h1>
+    <p>ПРИВЕТ ВСЕМ</p>
+  </header>
+
+  <!-- Пример других кнопок -->
+  <a class="btn" href="#">Кнопка 1</a>
+  <a class="btn" href="#">Кнопка 2</a>
+
+  <footer>
+    © 2025 · Сделано РОБАНИКОМ
+  </footer>
+</body>
+  </html>
