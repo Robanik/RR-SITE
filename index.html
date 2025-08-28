@@ -14,7 +14,6 @@
       overflow-x: hidden;
     }
 
-    /* Анимация заголовка и текста */
     .fade {
       transition: opacity 0.5s ease;
       opacity: 1;
@@ -31,7 +30,7 @@
       margin: 0;
     }
 
-    /* Discord кнопка слева сверху */
+    /* Discord кнопка слева сверху с robanik */
     #discord-btn {
       position: fixed;
       top: 20px;
@@ -86,11 +85,18 @@
       padding: 0 20px;
       text-align: center;
     }
+
+    /* Счётчик онлайн */
+    #online-users {
+      margin-top: 30px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Discord кнопка слева сверху с текстом robanik -->
+  <!-- Discord кнопка слева сверху с robanik -->
   <a class="btn" id="discord-btn" href="https://discord.gg/pPHpAYjJ" target="_blank">
     <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord">
     Hub - robanik
@@ -108,6 +114,9 @@
   <div id="description" class="fade">
     Всем привет! Это сайт, где вы можете получить скрипты для разных игр. Я почти каждый день работаю над скриптами и решил сделать сайт для новичков. Здесь вы получите идеальные скрипты для игр, и надеюсь, вам всё понравится.
   </div>
+
+  <!-- Счётчик онлайн -->
+  <div id="online-users">Загрузка...</div>
 
   <script>
     const langBtn = document.getElementById('lang-btn');
@@ -128,22 +137,34 @@
     let currentLang = 'ru';
 
     langBtn.addEventListener('click', () => {
-      // Сначала скрываем текст
       title.classList.add('fade-out');
       desc.classList.add('fade-out');
 
       setTimeout(() => {
-        // Меняем текст
         currentLang = currentLang === 'ru' ? 'en' : 'ru';
         title.textContent = text[currentLang].title;
         desc.textContent = text[currentLang].description;
         langBtn.textContent = currentLang === 'ru' ? 'EN' : 'RU';
 
-        // Показываем текст
         title.classList.remove('fade-out');
         desc.classList.remove('fade-out');
-      }, 300); // время соответствует transition в CSS
+      }, 300);
     });
+
+    // Счётчик онлайн через CountAPI
+    const counterDiv = document.getElementById('online-users');
+    const namespace = "rrscript_site";
+    const key = "online_users";
+
+    // Получаем текущее значение счётчика
+    fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
+      .then(res => res.json())
+      .then(data => {
+        counterDiv.textContent = "Сейчас на сайте: " + data.value;
+      })
+      .catch(err => {
+        counterDiv.textContent = "Не удалось загрузить онлайн пользователей";
+      });
   </script>
 
 </body>
