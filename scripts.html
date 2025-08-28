@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>RR SCRIPT - Script</title>
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg">
+  <style>
+    body {
+      margin:0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 20px;
+    }
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.1);
+      transition: background 0.3s, transform 0.2s;
+      color: white;
+      text-decoration: none;
+    }
+    .tab:hover { background: rgba(255,255,255,0.3); transform: scale(1.05);}
+    .active-tab { background: rgba(255,255,255,0.5); font-weight: bold; }
+
+    #discord-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #7289da;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-size: 1em;
+      color: white;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 1000;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    #discord-btn:hover { background: #5b6eae; transform: scale(1.08); box-shadow: 0 6px 20px rgba(0,0,0,0.4);}
+    #discord-btn img { width:20px; height:20px;}
+
+    #lang-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ff6b6b;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-size: 1em;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    #lang-btn:hover { background:#ff3b3b; transform: scale(1.08); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+
+    #content { padding:100px 20px 50px 20px; }
+  </style>
+</head>
+<body>
+
+  <!-- Вкладки -->
+  <div class="tabs">
+    <a href="index.html" class="tab">Home</a>
+    <a href="scripts.html" class="tab active-tab">Script</a>
+  </div>
+
+  <!-- Кнопки -->
+  <a class="btn" id="discord-btn" href="https://discord.gg/pPHpAYjJ" target="_blank">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord">
+    Hub - robanik
+  </a>
+  <div id="lang-btn">EN</div>
+
+  <!-- Контент вкладки Script -->
+  <div id="content">
+    <!-- Сюда позже добавим скрипты -->
+    <h2>Здесь будут скрипты</h2>
+  </div>
+
+</body>
+</html>
