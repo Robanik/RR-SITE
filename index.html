@@ -5,6 +5,7 @@
   <title>RR SCRIPT</title>
   <link rel="icon" href="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg">
   <style>
+    /* Общий стиль */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -12,14 +13,25 @@
       color: white;
       text-align: center;
       overflow-x: hidden;
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
     }
 
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Анимация появления текста */
     .fade {
-      transition: opacity 0.5s ease;
+      transition: opacity 0.6s ease, transform 0.6s ease;
       opacity: 1;
+      transform: translateY(0);
     }
     .fade-out {
       opacity: 0;
+      transform: translateY(-50px);
     }
 
     header {
@@ -28,6 +40,7 @@
     h1 {
       font-size: 4em;
       margin: 0;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
     }
 
     /* Discord кнопка слева сверху с robanik */
@@ -45,11 +58,13 @@
       align-items: center;
       gap: 6px;
       z-index: 1000;
-      transition: background 0.3s, transform 0.2s;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
     #discord-btn:hover {
       background: #5b6eae;
-      transform: scale(1.05);
+      transform: scale(1.08);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
     #discord-btn img {
       width: 20px;
@@ -68,29 +83,25 @@
       color: white;
       text-decoration: none;
       cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
       z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
     #lang-btn:hover {
       background: #ff3b3b;
-      transform: scale(1.05);
+      transform: scale(1.08);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
 
-    /* Текст снизу */
+    /* Текст описания */
     #description {
       max-width: 800px;
       margin: 50px auto;
-      font-size: 1.1em;
-      line-height: 1.6;
+      font-size: 1.2em;
+      line-height: 1.7;
       padding: 0 20px;
       text-align: center;
-    }
-
-    /* Счётчик онлайн */
-    #online-users {
-      margin-top: 30px;
-      font-size: 1.2em;
-      font-weight: bold;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
     }
   </style>
 </head>
@@ -115,9 +126,6 @@
     Всем привет! Это сайт, где вы можете получить скрипты для разных игр. Я почти каждый день работаю над скриптами и решил сделать сайт для новичков. Здесь вы получите идеальные скрипты для игр, и надеюсь, вам всё понравится.
   </div>
 
-  <!-- Счётчик онлайн -->
-  <div id="online-users">Загрузка...</div>
-
   <script>
     const langBtn = document.getElementById('lang-btn');
     const title = document.getElementById('main-title');
@@ -137,6 +145,7 @@
     let currentLang = 'ru';
 
     langBtn.addEventListener('click', () => {
+      // Добавляем эффект плавного исчезания
       title.classList.add('fade-out');
       desc.classList.add('fade-out');
 
@@ -146,26 +155,12 @@
         desc.textContent = text[currentLang].description;
         langBtn.textContent = currentLang === 'ru' ? 'EN' : 'RU';
 
+        // Плавное появление нового текста
         title.classList.remove('fade-out');
         desc.classList.remove('fade-out');
       }, 300);
     });
-
-    // Счётчик онлайн через CountAPI
-    const counterDiv = document.getElementById('online-users');
-    const namespace = "rrscript_site";
-    const key = "online_users";
-
-    // Получаем текущее значение счётчика
-    fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
-      .then(res => res.json())
-      .then(data => {
-        counterDiv.textContent = "Сейчас на сайте: " + data.value;
-      })
-      .catch(err => {
-        counterDiv.textContent = "Не удалось загрузить онлайн пользователей";
-      });
   </script>
 
 </body>
-    </html>
+</html>
