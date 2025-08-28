@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Мой сайт</title>
+  <title>RR SCRIPT</title>
   <link rel="icon" href="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg">
   <style>
     /* Общий стиль */
@@ -12,38 +12,22 @@
       background: linear-gradient(135deg, #667eea, #764ba2);
       color: white;
       text-align: center;
+      overflow-x: hidden;
     }
 
-    /* Шапка сайта */
+    /* Анимация текста */
+    @keyframes slideIn {
+      0% { transform: translateY(-100px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
     header {
-      padding: 100px 20px 50px 20px;
+      padding: 150px 20px 50px 20px;
     }
     h1 {
-      font-size: 3em;
+      font-size: 4em;
       margin: 0;
-    }
-    p {
-      font-size: 1.2em;
-      opacity: 0.9;
-    }
-
-    /* Кнопки */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: #ff6b6b;
-      border-radius: 8px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s, transform 0.2s;
-    }
-    .btn:hover {
-      background: #ff3b3b;
-      transform: scale(1.05);
+      animation: slideIn 1s ease-out;
     }
 
     /* Discord кнопка слева сверху */
@@ -55,18 +39,23 @@
       padding: 10px 18px;
       border-radius: 50px;
       font-size: 1em;
-      z-index: 1000;
+      color: white;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
       gap: 6px;
+      z-index: 1000;
+      transition: background 0.3s, transform 0.2s;
     }
     #discord-btn:hover {
       background: #5b6eae;
+      transform: scale(1.05);
     }
     #discord-btn img {
       width: 20px;
       height: 20px;
     }
 
-    /* Подвал */
     footer {
       margin-top: 50px;
       padding: 20px;
@@ -80,21 +69,16 @@
   <!-- Discord кнопка слева сверху -->
   <a class="btn" id="discord-btn" href="https://discord.gg/pPHpAYjJ" target="_blank">
     <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord">
-    Discord
+    (Hub)
   </a>
 
-  <!-- Основная шапка -->
+  <!-- Главный заголовок с анимацией -->
   <header>
-    <h1>Привет! 🚀</h1>
-    <p>ПРИВЕТ ВСЕМ</p>
+    <h1>(RR SCRIPT)</h1>
   </header>
 
-  <!-- Пример других кнопок -->
-  <a class="btn" href="#">Кнопка 1</a>
-  <a class="btn" href="#">Кнопка 2</a>
-
   <footer>
-    © 2025 · Сделано РОБАНИКОМ
+    © 2025 · Сделано мной
   </footer>
 </body>
-  </html>
+</html>
