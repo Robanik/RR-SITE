@@ -114,13 +114,47 @@
 
   <!-- Верхняя панель -->
 <div class="top-bar">
-  <a id="discord-btn" class="nav-btn" href="https://discord.gg/pPHpAYjJ" target="_blank">
+  <a id="discord-btn" class="top-btn" href="https://discord.gg/pPHpAYjJ" target="_blank">
     <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord">
     Hub - robanik
   </a>
-  <a href="index.html" class="nav-btn">Home</a>
-  <a href="scripts.html" class="nav-btn">Script</a>
+  <a href="index.html" class="top-btn">Home</a>
+  <a href="scripts.html" class="top-btn">Script</a>
 </div>
+
+<style>
+.top-bar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 15px;
+  z-index: 1000;
+}
+
+.top-btn {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-size: 1em;
+  color: white;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.top-btn:hover {
+  background: linear-gradient(45deg, #5b6eae, #667eea);
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+.top-btn img {
+  width: 20px;
+  height: 20px;
+}
+</style>
 
   <!-- Кнопка смены языка справа сверху -->
   <div id="lang-btn">EN</div>
