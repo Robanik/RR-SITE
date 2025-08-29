@@ -23,7 +23,7 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Анимация появления текста */
+    /* Анимация текста */
     .fade {
       transition: opacity 0.6s ease, transform 0.6s ease;
       opacity: 1;
@@ -43,11 +43,17 @@
       text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
     }
 
-    /* Discord кнопка слева сверху с robanik */
-    #discord-btn {
+    /* Верхняя панель */
+    .top-nav {
       position: fixed;
       top: 20px;
       left: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    .top-btn {
       background: #7289da;
       padding: 10px 18px;
       border-radius: 50px;
@@ -57,16 +63,15 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      z-index: 1000;
       transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
-    #discord-btn:hover {
+    .top-btn:hover {
       background: #5b6eae;
       transform: scale(1.08);
       box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
-    #discord-btn img {
+    .top-btn img {
       width: 20px;
       height: 20px;
     }
@@ -107,11 +112,15 @@
 </head>
 <body>
 
-  <!-- Discord кнопка слева сверху с robanik -->
-  <a class="btn" id="discord-btn" href="https://discord.gg/pPHpAYjJ" target="_blank">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord">
-    Hub - robanik
-  </a>
+  <!-- Верхняя панель -->
+  <div class="top-nav">
+    <a class="top-btn" href="https://discord.gg/pPHpAYjJ" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord">
+      Hub - robanik
+    </a>
+    <a class="top-btn" href="index.html">Home</a>
+    <a class="top-btn" href="scripts.html">Scripts</a>
+  </div>
 
   <!-- Кнопка смены языка справа сверху -->
   <div id="lang-btn">EN</div>
@@ -122,14 +131,14 @@
   </header>
 
   <!-- Описание сайта -->
-<div id="description" class="fade">
-  Всем привет! Это сайт, где вы можете получить скрипты для разных игр. Я почти каждый день работаю над скриптами и решил сделать сайт для новичков. Здесь вы получите идеальные скрипты для игр, и надеюсь, вам всё понравится.
-</div>
+  <div id="description" class="fade">
+    Всем привет! Это сайт, где вы можете получить скрипты для разных игр. Я почти каждый день работаю над скриптами и решил сделать сайт для новичков. Здесь вы получите идеальные скрипты для игр, и надеюсь, вам всё понравится.
+  </div>
 
-<!-- Картинка снизу -->
-<div style="margin-top:30px;">
-  <img src="IMRRG.png" alt="Моя картинка" style="max-width:80%; height:auto; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
-</div>
+  <!-- Картинка снизу -->
+  <div style="margin-top:30px;">
+    <img src="IMRRG.png" alt="Моя картинка" style="max-width:80%; height:auto; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+  </div>
 
   <script>
     const langBtn = document.getElementById('lang-btn');
@@ -150,7 +159,6 @@
     let currentLang = 'ru';
 
     langBtn.addEventListener('click', () => {
-      // Добавляем эффект плавного исчезания
       title.classList.add('fade-out');
       desc.classList.add('fade-out');
 
@@ -160,7 +168,6 @@
         desc.textContent = text[currentLang].description;
         langBtn.textContent = currentLang === 'ru' ? 'EN' : 'RU';
 
-        // Плавное появление нового текста
         title.classList.remove('fade-out');
         desc.classList.remove('fade-out');
       }, 300);
@@ -168,4 +175,4 @@
   </script>
 
 </body>
-  </html>
+</html>
