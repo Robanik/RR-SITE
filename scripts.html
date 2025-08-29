@@ -31,9 +31,9 @@
       z-index: 1000;
     }
 
-    /* Кнопка Discord */
-    #discord-btn {
-      background: #7289da;
+    /* Универсальный стиль кнопок */
+    .nav-btn {
+      background: linear-gradient(45deg, #667eea, #764ba2);
       padding: 10px 18px;
       border-radius: 50px;
       font-size: 1em;
@@ -45,32 +45,17 @@
       transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
-    #discord-btn:hover {
-      background: #5b6eae;
+    .nav-btn:hover {
+      background: linear-gradient(45deg, #5b6eae, #667eea);
       transform: scale(1.08);
       box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
-    #discord-btn img {
+    .nav-btn img {
       width: 20px;
       height: 20px;
     }
-
-    /* Навигация (Home / Script) */
-    .tab {
-      padding: 10px 20px;
-      border-radius: 50px;
-      background: rgba(255,255,255,0.1);
-      text-decoration: none;
-      color: white;
-      font-size: 1em;
-      transition: background 0.3s, transform 0.2s;
-    }
-    .tab:hover {
-      background: rgba(255,255,255,0.3);
-      transform: scale(1.05);
-    }
     .active-tab {
-      background: rgba(255,255,255,0.5);
+      background: linear-gradient(45deg, #ff6b6b, #ff3b3b);
       font-weight: bold;
     }
 
@@ -138,12 +123,12 @@
 
   <!-- Верхняя панель -->
   <div class="top-bar">
-    <a id="discord-btn" href="https://discord.gg/pPHpAYjJ" target="_blank">
+    <a id="discord-btn" class="nav-btn" href="https://discord.gg/pPHpAYjJ" target="_blank">
       <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord">
       Hub - robanik
     </a>
-    <a href="index.html" class="tab">Home</a>
-    <a href="scripts.html" class="tab active-tab">Script</a>
+    <a href="index.html" class="nav-btn">Home</a>
+    <a href="scripts.html" class="nav-btn active-tab">Script</a>
   </div>
 
   <!-- Кнопка смены языка -->
@@ -201,4 +186,4 @@
     });
   </script>
 </body>
-                                           </html>
+</html>
