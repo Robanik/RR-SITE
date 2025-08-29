@@ -107,10 +107,76 @@
 </head>
 <body>
 
-  <!-- Навигация сверху -->
+  /* Навигация */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 20px;
+    }
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.1);
+      transition: background 0.3s, transform 0.2s;
+      text-decoration: none;
+      color: white;
+    }
+    .tab:hover {
+      background: rgba(255,255,255,0.3);
+      transform: scale(1.05);
+    }
+    .active-tab {
+      background: rgba(255,255,255,0.5);
+      font-weight: bold;
+    }
+
+    /* Кнопки и контейнеры */
+    .script-box {
+      background: rgba(0,0,0,0.4);
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 700px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .script-box h2 {
+      margin-bottom: 15px;
+    }
+    .code-box {
+      background: rgba(255,255,255,0.1);
+      padding: 15px;
+      border-radius: 10px;
+      text-align: left;
+      font-family: monospace;
+      white-space: nowrap;
+      overflow-x: auto;
+    }
+    .copy-btn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #00c853;
+      color: white;
+      font-weight: bold;
+      transition: transform 0.2s, background 0.3s;
+    }
+    .copy-btn:hover {
+      transform: scale(1.05);
+      background: #00e676;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Навигация -->
   <div class="tabs">
-    <a href="index.html" class="tab active-tab">Home</a>
-    <a href="scripts.html" class="tab">Script</a>
+    <a href="index.html" class="tab">Home</a>
+    <a href="scripts.html" class="tab active-tab">Script</a>
   </div>
 
   <!-- Discord кнопка слева сверху с robanik -->
