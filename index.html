@@ -2,231 +2,165 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RR Script - Scripts</title>
+  <title>RR SCRIPT</title>
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg">
   <style>
+    /* Общий стиль */
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
       text-align: center;
-      background: linear-gradient(135deg, #1e1e2f, #121212);
-      color: white;
+      overflow-x: hidden;
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
     }
 
-    /* Навигация */
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 15px;
-      background: rgba(0, 0, 0, 0.6);
-    }
-    .tab {
-      text-decoration: none;
-      color: #bbb;
-      font-weight: bold;
-      font-size: 18px;
-      transition: color 0.3s;
-    }
-    .tab:hover {
-      color: #00e676;
-    }
-    .active-tab {
-      color: #00e676;
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    /* Discord кнопка */
+    /* Анимация появления текста */
+    .fade {
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-out {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+
+    header {
+      padding: 150px 20px 50px 20px;
+    }
+    h1 {
+      font-size: 4em;
+      margin: 0;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    }
+
+    /* Discord кнопка слева сверху с robanik */
     #discord-btn {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background: #5865F2;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #7289da;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-size: 1em;
       color: white;
-      padding: 10px 15px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
       text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 1000;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    #discord-btn:hover {
+      background: #5b6eae;
+      transform: scale(1.08);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
     #discord-btn img {
       width: 20px;
       height: 20px;
-      filter: invert(1);
-    }
-    #discord-btn:hover {
-      background: #4752c4;
     }
 
-    /* Переключатель языка */
+    /* Кнопка смены языка справа сверху */
     #lang-btn {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: #00c853;
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    #lang-btn:hover {
-      background: #00e676;
-    }
-
-    /* Блоки скриптов */
-    .script-box {
-      background: rgba(255,255,255,0.05);
-      padding: 20px;
-      border-radius: 12px;
-      margin: 20px auto;
-      width: 80%;
-      max-width: 700px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-    .script-box h2 {
-      margin-bottom: 10px;
-      color: #00e676;
-    }
-    .code {
-      background: #111;
-      padding: 10px;
-      border-radius: 6px;
-      font-family: monospace;
-      white-space: nowrap;
-      overflow-x: auto;
-      margin-bottom: 10px;
-    }
-    .copy-btn {
-      background: #00c853;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      color: white;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    .copy-btn:hover {
-      background: #00e676;
-    }
-
-    /* Мини-кнопка меню */
-    .mini-btn {
       position: fixed;
-      bottom: 20px;
-      left: 20px;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 50%;
-      background: #00c853;
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: transform 0.2s, background 0.3s;
-    }
-    .mini-btn:hover {
-      transform: scale(1.1);
-      background: #00e676;
-    }
-
-    /* Боковое меню */
-    .side-menu {
-      position: fixed;
-      left: -220px;
-      top: 0;
-      width: 200px;
-      height: 100%;
-      background: rgba(0,0,0,0.95);
-      padding-top: 60px;
-      transition: left 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      text-align: left;
-      padding-left: 20px;
-      z-index: 1000;
-    }
-    .side-menu a {
+      top: 20px;
+      right: 20px;
+      background: #ff6b6b;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-size: 1em;
       color: white;
       text-decoration: none;
-      font-size: 18px;
-      transition: color 0.3s;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
-    .side-menu a:hover {
-      color: #00e676;
+    #lang-btn:hover {
+      background: #ff3b3b;
+      transform: scale(1.08);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
-    .side-menu.open {
-      left: 0;
+
+    /* Текст описания */
+    #description {
+      max-width: 800px;
+      margin: 50px auto;
+      font-size: 1.2em;
+      line-height: 1.7;
+      padding: 0 20px;
+      text-align: center;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
     }
   </style>
 </head>
 <body>
 
-  <!-- Навигация -->
-  <div class="tabs">
-    <a href="index.html" class="tab">Home</a>
-    <a href="scripts.html" class="tab active-tab">Script</a>
-  </div>
-
-  <!-- Discord кнопка -->
+  <!-- Discord кнопка слева сверху с robanik -->
   <a class="btn" id="discord-btn" href="https://discord.gg/pPHpAYjJ" target="_blank">
     <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord">
     Hub - robanik
   </a>
 
-  <!-- Кнопка смены языка -->
+  <!-- Кнопка смены языка справа сверху -->
   <div id="lang-btn">EN</div>
 
-  <!-- Скрипты -->
-  <div class="script-box">
-    <h2>99 night in the forest</h2>
-    <div class="code" id="code1">loadstring(game:HttpGet("https://raw.githubusercontent.com/Robanik/99_night_premium_menu/refs/heads/main/99MENUROBANIK"))()</div>
-    <button class="copy-btn" onclick="copyCode('code1')">Copy</button>
-  </div>
+  <!-- Главный заголовок -->
+  <header>
+    <h1 id="main-title" class="fade">RR SCRIPT</h1>
+  </header>
 
-  <div class="script-box">
-    <h2>Dandy's world</h2>
-    <div class="code" id="code2">loadstring(game:HttpGet("https://raw.githubusercontent.com/Robanik/WORLDDRR/refs/heads/main/RRW"))()</div>
-    <button class="copy-btn" onclick="copyCode('code2')">Copy</button>
-  </div>
-
-  <div class="script-box">
-    <h2>No scope arcade</h2>
-    <div class="code" id="code3">loadstring(game:HttpGet("https://raw.githubusercontent.com/Robanik/NOSCOPE_ROBANIK/refs/heads/main/NOSCOPERR"))()</div>
-    <button class="copy-btn" onclick="copyCode('code3')">Copy</button>
-  </div>
-
-  <!-- Мини кнопка -->
-  <button id="menu-toggle" class="mini-btn">></button>
-
-  <!-- Боковое меню -->
-  <div id="side-menu" class="side-menu">
-    <a href="index.html">🏠 Home</a>
-    <a href="scripts.html">📜 Scripts</a>
-    <a href="https://discord.gg/pPHpAYjJ" target="_blank">💬 Discord</a>
+  <!-- Описание сайта -->
+  <div id="description" class="fade">
+    Всем привет! Это сайт, где вы можете получить скрипты для разных игр. Я почти каждый день работаю над скриптами и решил сделать сайт для новичков. Здесь вы получите идеальные скрипты для игр, и надеюсь, вам всё понравится.
   </div>
 
   <script>
-    // Копирование кода
-    function copyCode(id) {
-      const text = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        alert("Скопировано!");
-      });
-    }
+    const langBtn = document.getElementById('lang-btn');
+    const title = document.getElementById('main-title');
+    const desc = document.getElementById('description');
 
-    // Меню
-    const menuBtn = document.getElementById("menu-toggle");
-    const sideMenu = document.getElementById("side-menu");
+    const text = {
+      ru: {
+        title: 'RR SCRIPT',
+        description: 'Всем привет! Это сайт, где вы можете получить скрипты для разных игр. Я почти каждый день работаю над скриптами и решил сделать сайт для новичков. Здесь вы получите идеальные скрипты для игр, и надеюсь, вам всё понравится.'
+      },
+      en: {
+        title: 'RR SCRIPT',
+        description: 'Hello everyone! This site is where you can get scripts for different games. I work on scripts almost every day and decided to make a site for beginners. Here you will get perfect scripts for games, and I hope you enjoy them.'
+      }
+    };
 
-    menuBtn.addEventListener("click", () => {
-      sideMenu.classList.toggle("open");
+    let currentLang = 'ru';
+
+    langBtn.addEventListener('click', () => {
+      // Добавляем эффект плавного исчезания
+      title.classList.add('fade-out');
+      desc.classList.add('fade-out');
+
+      setTimeout(() => {
+        currentLang = currentLang === 'ru' ? 'en' : 'ru';
+        title.textContent = text[currentLang].title;
+        desc.textContent = text[currentLang].description;
+        langBtn.textContent = currentLang === 'ru' ? 'EN' : 'RU';
+
+        // Плавное появление нового текста
+        title.classList.remove('fade-out');
+        desc.classList.remove('fade-out');
+      }, 300);
     });
   </script>
 
 </body>
-  </html>
+</html>
